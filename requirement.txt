@@ -1,6 +1,6 @@
 streamlit==1.29.0
+xgboost==2.0.2
 pandas
 pickle
 scikit-learn
 numpy
-xgboost
