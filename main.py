@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import pickle
 import numpy as np
+import xgboost
 
 # Load the model
 
