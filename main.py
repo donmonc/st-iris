@@ -4,7 +4,13 @@ import pickle
 import numpy as np
 
 # Load the model
-model = pickle.load(open('model.pkl', 'rb'))
+
+def load_model():
+    with open('model.pkl', 'rb') as file:
+        trained_model = pickle.load(file)
+    return trained_model
+    
+#model = pickle.load(open('model.pkl', 'rb'))
 
 st.title('Iris Flower Classifier')
 
@@ -13,11 +19,6 @@ sepal_length = st.text_input('Sepal Length')
 sepal_width = st.text_input('Sepal Width')
 petal_length = st.text_input('Petal Length')
 petal_width = st.text_input('Petal Width')
-
-
-# Initialize session state for the prediction
-if 'prediction' not in st.session_state:
-    st.session_state['prediction'] = None
 
 
 # Function To Make Prediction
@@ -35,6 +36,7 @@ def predict(sepal_length, sepal_width, petal_length, petal_width):
         X = pd.DataFrame([input_data])
 
         # Make prediction
+        model = load_model()
         prediction = model.predict(X)[0]
 
         # Display result
